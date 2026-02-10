@@ -20,7 +20,7 @@ function init3D() {
         container.style.left = '0';
         container.style.width = '100%';
         container.style.height = '100%';
-        container.style.zIndex = '-1'; // Behind content
+        container.style.zIndex = '-2'; // Behind content but above page background
         container.style.pointerEvents = 'none'; // Don't interfere with UI interactions
         document.body.appendChild(container);
     }

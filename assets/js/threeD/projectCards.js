@@ -7,6 +7,77 @@ let mouse = null; // Will be initialized when Three.js is available
 let INTERSECTED = null;
 let isProjectSceneReady = false;
 
+// Loading tracking
+let totalTexturesToLoad = 0;
+let texturesLoaded = 0;
+let loadingElement = null;
+
+// Create loading indicator element
+function createLoadingIndicator() {
+    loadingElement = document.createElement('div');
+    loadingElement.id = 'project-scene-loading';
+    loadingElement.style.position = 'fixed';
+    loadingElement.style.top = '0';
+    loadingElement.style.left = '0';
+    loadingElement.style.width = '100%';
+    loadingElement.style.height = '100%';
+    loadingElement.style.background = 'rgba(0, 0, 0, 0.8)';
+    loadingElement.style.color = '#ffd700';
+    loadingElement.style.display = 'flex';
+    loadingElement.style.flexDirection = 'column';
+    loadingElement.style.alignItems = 'center';
+    loadingElement.style.justifyContent = 'center';
+    loadingElement.style.zIndex = '1000'; // Above everything
+    loadingElement.style.fontFamily = 'Poppins, sans-serif';
+    loadingElement.innerHTML = `
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading 3D Projects...</div>
+        <div class="loading-progress">0%</div>
+    `;
+    // Add CSS for spinner
+    const style = document.createElement('style');
+    style.textContent = `
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-top: 4px solid #ffd700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loading-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .loading-progress {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(loadingElement);
+}
+
+// Update loading progress
+function updateLoadingProgress() {
+    if (!loadingElement) return;
+    const progress = Math.round((texturesLoaded / totalTexturesToLoad) * 100);
+    const progressText = loadingElement.querySelector('.loading-progress');
+    if (progressText) {
+        progressText.textContent = `${progress}%`;
+    }
+    // Hide loading element when all textures are loaded
+    if (texturesLoaded >= totalTexturesToLoad && totalTexturesToLoad > 0) {
+        loadingElement.style.display = 'none';
+    }
+}
+
 // Animation parameters
 let rotationSpeed = 0.001;
 let hoverLift = 0.2; // How much cards lift on hover
@@ -55,6 +126,9 @@ function initProjectScene() {
     projectRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit DPR for performance
     projectContainer.appendChild(projectRenderer.domElement);
 
+    // Add loading indicator
+    createLoadingIndicator();
+
     // Add lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     projectScene.add(ambientLight);
@@ -73,6 +147,10 @@ function initProjectScene() {
 
     // Load projects data from existing script
     loadProjectsData();
+
+    // Initialize texture loading counters
+    totalTexturesToLoad = projectsData3D.length;
+    texturesLoaded = 0;
 
     // Create project objects (cards)
     createProjectObjects();
@@ -178,7 +256,9 @@ function createProjectCard(project) {
 
     // Front face (project thumbnail/screenshot)
     const frontMaterial = new THREE.MeshBasicMaterial({
-        map: textureLoader.load(project.image, undefined, undefined, () => {
+        map: textureLoader.load(project.image, (texture) => {
+            texturesLoaded++;
+            updateLoadingProgress();
             console.log(`Loaded texture for ${project.title}`);
         }),
         transparent: false

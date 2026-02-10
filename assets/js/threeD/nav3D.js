@@ -390,6 +390,43 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initNavScene, 500);
 });
 
+// Set up mutation observer to keep 3D navigation in sync with actual navigation
+function setupNavMutationObserver() {
+    // Select all nav links
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+
+    // Create a mutation observer config
+    const config = { attributes: true, attributeFilter: ['class'] };
+
+    // Create a new observer instance
+    const observer = new MutationObserver((mutationsList, observer) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const target = mutation.target;
+                // Check if this is a nav link
+                if (target.matches('[data-nav-link]')) {
+                    // Find the corresponding item in navItemsData
+                    const index = Array.from(navLinks).indexOf(target);
+                    if (index !== -1 && navItemsData[index]) {
+                        // Update the active state
+                        navItemsData[index].isActive = target.classList.contains('active');
+                        // Update the visual state
+                        updateNavItemActiveState();
+                    }
+                }
+            }
+        }
+    });
+
+    // Start observing each nav link for class changes
+    navLinks.forEach(link => {
+        observer.observe(link, config);
+    });
+}
+
+// Call the setup function after initializing the nav scene
+// We'll modify the initNavScene function to call this
+
 // Expose API for debugging and control
 window.navSceneAPI = {
     init: initNavScene,

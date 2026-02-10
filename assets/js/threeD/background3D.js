@@ -32,7 +32,7 @@ function initParticleSystem() {
         particleContainer.style.width = '100%';
         particleContainer.style.height = '100%';
         particleContainer.style.pointerEvents = 'none'; // Don't interfere with UI
-        particleContainer.style.zIndex = '-2'; // Behind everything
+        particleContainer.style.zIndex = '-5'; // Behind everything
         document.body.appendChild(particleContainer);
     }
 
