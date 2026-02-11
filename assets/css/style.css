@@ -1734,6 +1734,11 @@ img {
   mix-blend-mode: difference;
 }
 
+/* Ensure consistent cursor appearance in light theme */
+[data-theme="light"] .custom-cursor {
+  mix-blend-mode: normal;
+}
+
 .custom-cursor.expand {
   width: 30px;
   height: 30px;
