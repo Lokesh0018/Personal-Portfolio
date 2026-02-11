@@ -142,7 +142,7 @@ main {
 /* Sidebar (Profile Card / Hero Intro) */
 .sidebar {
   background: hsla(240, 2%, 12%, 0.7);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 20px;
   padding: 15px;
@@ -157,7 +157,7 @@ main {
 /* Glassmorphism for light theme */
 [data-theme="light"] .sidebar {
   background: hsla(0, 0%, 98%, 0.7);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   box-shadow: 0 16px 30px hsla(0, 0%, 80%, 0.1), var(--shadow-1);
 }
@@ -183,6 +183,11 @@ main {
   font-weight: var(--fw-500);
   letter-spacing: -0.25px;
   margin-bottom: 10px;
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .info-content .title {
@@ -375,6 +380,26 @@ main {
   overflow: hidden;
 }
 
+/* Underline effect for active and hover states */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--orange-yellow-crayola);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.navbar-link.active::after,
+.navbar-link:hover::after,
+.navbar-link:focus::after {
+  transform: scaleX(1);
+}
+
 .navbar-link:hover,
 .navbar-link:focus {
   color: var(--orange-yellow-crayola);
@@ -387,22 +412,6 @@ main {
   font-weight: 600;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
   position: relative;
-}
-
-.navbar-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--orange-yellow-crayola);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.navbar-link.active:hover::after {
-  transform: scaleX(1);
 }
 
 /* Article and general headings styling */
@@ -474,11 +483,21 @@ article.active {
 .h3 {
   font-size: var(--fs-2);
   font-family: var(--ff-montserrat);
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .h4 {
   font-size: var(--fs-4);
   font-family: var(--ff-montserrat);
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .h5 {

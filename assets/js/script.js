@@ -277,16 +277,12 @@ function createProjectCard(project) {
   li.innerHTML = `
     <div class="project-card-wrapper ${cardClass}" ${cardAction}>
       <figure class="project-img">
-        <div class="project-item-icon-box">
-          <ion-icon name="${hasCaseStudy ? 'document-text-outline' : 'eye-outline'}"></ion-icon>
-        </div>
         <img src="${project.image}" alt="${project.title}" loading="lazy">
         <!-- Hover overlay -->
         <div class="project-overlay">
           <div class="overlay-content">
             <h4 class="overlay-title">${project.title}</h4>
             <p class="overlay-description">${project.description}</p>
-            <a href="${project.demoLink || project.githubLink}" target="_blank" class="btn btn-sm overlay-btn">View Project</a>
           </div>
         </div>
       </figure>
