@@ -223,9 +223,9 @@ function initFilters() {
 function createProjectCard(project) {
   const li = document.createElement('li');
   li.className = 'project-item active';
-  
+
   const techTags = project.techStack.map(tech => `<span>${tech}</span>`).join('');
-  
+
   // Decide whether card triggers modal or directly opens link
   // The user requested: "Allow each major project to open a detailed technical case study"
   const hasCaseStudy = project.caseStudy != null;
@@ -239,6 +239,14 @@ function createProjectCard(project) {
           <ion-icon name="${hasCaseStudy ? 'document-text-outline' : 'eye-outline'}"></ion-icon>
         </div>
         <img src="${project.image}" alt="${project.title}" loading="lazy">
+        <!-- Hover overlay -->
+        <div class="project-overlay">
+          <div class="overlay-content">
+            <h4 class="overlay-title">${project.title}</h4>
+            <p class="overlay-description">${project.description}</p>
+            <a href="${project.demoLink || project.githubLink}" target="_blank" class="btn btn-sm overlay-btn">View Project</a>
+          </div>
+        </div>
       </figure>
       <h3 class="project-title">${project.title} <span class="project-status">${project.status}</span></h3>
       <p class="project-description">${project.description}</p>
@@ -341,22 +349,54 @@ if (document.getElementById('featured-projects')) {
   renderProjects();
 }
 
-// --- 3D Avatar Animation ---
+// --- Avatar Sequence Animation ---
 const avatarImg = document.getElementById('avatar-img');
+const totalFrames = 181;
+let targetFrame = 91; // Center face
+let currentFrame = 91; // Used for smooth interpolation
+let displayedFrame = 0; // Tracks currently applied frame
+
 document.addEventListener('mousemove', (e) => {
   if (!avatarImg) return;
+  
   const rect = avatarImg.getBoundingClientRect();
   const avatarX = rect.left + rect.width / 2;
-  const avatarY = rect.top + rect.height / 2;
   
-  const deltaX = e.clientX - avatarX;
-  const deltaY = e.clientY - avatarY;
+  let normalizedX = 0;
+  if (e.clientX < avatarX) {
+    // Map 0 -> avatarX to -1 -> 0
+    normalizedX = -(avatarX - e.clientX) / avatarX;
+  } else {
+    // Map avatarX -> window.innerWidth to 0 -> 1
+    normalizedX = (e.clientX - avatarX) / (window.innerWidth - avatarX);
+  }
   
-  const rotateX = Math.max(-25, Math.min(25, -(deltaY / window.innerHeight) * 50));
-  const rotateY = Math.max(-25, Math.min(25, (deltaX / window.innerWidth) * 50));
+  // Clamp between -1 and 1 just in case
+  normalizedX = Math.max(-1, Math.min(1, normalizedX));
   
-  avatarImg.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  // Map from -1..1 to 1..181
+  targetFrame = Math.round(((normalizedX + 1) / 2) * (totalFrames - 1)) + 1;
 });
+
+// Smoothly interpolate towards the target frame
+function animateAvatar() {
+  if (avatarImg) {
+    // Lerp (linear interpolation) for smooth transition
+    currentFrame += (targetFrame - currentFrame) * 0.1;
+    
+    const frameToDisplay = Math.round(currentFrame);
+    
+    if (displayedFrame !== frameToDisplay && frameToDisplay >= 1 && frameToDisplay <= totalFrames) {
+      displayedFrame = frameToDisplay;
+      const formattedFrame = displayedFrame.toString().padStart(3, '0');
+      avatarImg.src = `./assets/images/sequence/ezgif-frame-${formattedFrame}.jpg`;
+    }
+  }
+  requestAnimationFrame(animateAvatar);
+}
+
+// Start animation loop
+animateAvatar();
 
 // --- Scroll To Top ---
 const scrollToTopBtn = document.getElementById('scroll-to-top');
@@ -374,6 +414,36 @@ if (scrollToTopBtn) {
   });
 }
 
+// --- Theme Switcher ---
+const themeBtn = document.querySelector('.theme-btn');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or use system preference
+const getCurrentTheme = () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) return savedTheme;
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const setTheme = (theme) => {
+  htmlElement.setAttribute('data-theme', theme === 'light' ? 'light' : '');
+  localStorage.setItem('theme', theme);
+  // Update icon
+  const icon = themeBtn.querySelector('ion-icon');
+  icon.name = theme === 'dark' ? 'sunny' : 'moon';
+};
+
+// Initialize theme
+const currentTheme = getCurrentTheme();
+setTheme(currentTheme);
+
+// Theme toggle event listener
+themeBtn.addEventListener('click', () => {
+  const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+});
+
 // --- Custom Cursor ---
 const customCursor = document.createElement('div');
 customCursor.className = 'custom-cursor';
@@ -386,6 +456,19 @@ document.addEventListener('mousemove', (e) => {
 
 document.addEventListener('mousedown', () => customCursor.classList.add('expand'));
 document.addEventListener('mouseup', () => customCursor.classList.remove('expand'));
+
+// Add hovered state to cursor for interactive elements
+document.addEventListener('mouseover', (e) => {
+  if (e.target.matches('a, button, [role="button"], input, textarea, select, [tabindex]:not([tabindex="-1"])')) {
+    customCursor.classList.add('hovered');
+  }
+});
+
+document.addEventListener('mouseout', (e) => {
+  if (e.target.matches('a, button, [role="button"], input, textarea, select, [tabindex]:not([tabindex="-1"])')) {
+    customCursor.classList.remove('hovered');
+  }
+});
 
 // --- Dynamic Background Gradient Tracker ---
 const mainBg = document.createElement('div');
