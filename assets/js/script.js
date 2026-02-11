@@ -1,5 +1,47 @@
 'use strict';
 
+// --- Preloader Animation ---
+const preloader = document.getElementById('preloader');
+const preloaderImg = document.getElementById('preloader-img');
+const startFramePreloader = 33;
+const endFramePreloader = 120;
+let currentPreloadFrame = startFramePreloader;
+let preloaderLoaded = false;
+let preloaderAnimationFinished = false;
+
+window.addEventListener('load', () => {
+  preloaderLoaded = true;
+  checkPreloaderDone();
+});
+
+function checkPreloaderDone() {
+  if (preloaderLoaded && preloaderAnimationFinished && preloader) {
+    preloader.classList.add('hidden');
+    setTimeout(() => preloader.remove(), 500);
+  }
+}
+
+function playPreloader() {
+  if (!preloaderImg) return;
+  
+  const preloadInterval = setInterval(() => {
+    currentPreloadFrame++;
+    
+    if (currentPreloadFrame > endFramePreloader) {
+      clearInterval(preloadInterval);
+      preloaderAnimationFinished = true;
+      checkPreloaderDone();
+      return;
+    }
+    
+    const formattedFrame = currentPreloadFrame.toString().padStart(3, '0');
+    preloaderImg.src = `./assets/images/logo-sequence/ezgif-frame-${formattedFrame}.jpg`;
+  }, 35); // ~28 fps
+}
+
+// Start immediately
+playPreloader();
+
 // Element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
@@ -389,7 +431,7 @@ function animateAvatar() {
     if (displayedFrame !== frameToDisplay && frameToDisplay >= 1 && frameToDisplay <= totalFrames) {
       displayedFrame = frameToDisplay;
       const formattedFrame = displayedFrame.toString().padStart(3, '0');
-      avatarImg.src = `./assets/images/sequence/ezgif-frame-${formattedFrame}.jpg`;
+      avatarImg.src = `./assets/images/avatar-sequence/ezgif-frame-${formattedFrame}.jpg`;
     }
   }
   requestAnimationFrame(animateAvatar);
