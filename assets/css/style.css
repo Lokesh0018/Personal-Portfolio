@@ -554,6 +554,11 @@ article.active {
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   z-index: 1;
+  transition: transform var(--transition-1), box-shadow var(--transition-1);
+}
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-3);
 }
 
 .service-item::before {
@@ -657,6 +662,11 @@ article.active {
   box-shadow: var(--shadow-2);
   z-index: 1;
   position: relative;
+  transition: transform var(--transition-1), box-shadow var(--transition-1);
+}
+.skills-category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-3);
 }
 
 .skills-category-card::before {
@@ -960,6 +970,16 @@ article.active {
 
 .project-item {
   display: none;
+  position: relative;
+  background: var(--border-gradient-onyx);
+  border-radius: 16px;
+  box-shadow: var(--shadow-2);
+  transition: transform var(--transition-1), box-shadow var(--transition-1);
+  overflow: hidden;
+}
+.project-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-3);
 }
 
 .project-item.active {
@@ -1221,6 +1241,32 @@ textarea.form-input {
   transition: var(--transition-1);
   width: 100%;
   z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-btn:hover {
+  background: var(--bg-gradient-yellow-1);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-2);
+}
+
+.form-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.form-btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .form-btn::before {
