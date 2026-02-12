@@ -1499,8 +1499,8 @@ textarea.form-input {
   }
 
   .modal-container {
-    max-height: 60vh;
     padding: 30px;
+    top: -200px;
   }
 
   .case-study-title {
@@ -1637,7 +1637,8 @@ img {
     var(--shadow-3);
   padding: 40px;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-overlay.active .modal-container {

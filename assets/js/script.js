@@ -119,7 +119,7 @@ const projectsData = [
     status: "Production",
     description: "Multi-tenant SaaS platform with role-based portals, OTP verification, isolated institutional data, and automated result publishing.",
     techStack: ["React", "Node.js", "Express", "MongoDB", "Brevo API"],
-    image: "./assets/images/ResultScale.png",
+    image: "./assets/images/projects/ResultScale.png",
     demoLink: "https://resultscale.web.app",
     githubLink: "#",
     caseStudy: {
@@ -140,7 +140,7 @@ const projectsData = [
     status: "Live",
     description: "A robust full-stack application to automatically generate and manage hall tickets for university examinations.",
     techStack: ["Spring Boot", "React", "MySQL"],
-    image: "./assets/images/HTG.png",
+    image: "./assets/images/projects/HTG.png",
     githubLink: "https://github.com/Lokesh0018/HT-Generator",
     caseStudy: {
       problem: "Manual generation of hall tickets was error-prone and time-consuming for the administration team.",
@@ -160,8 +160,7 @@ const projectsData = [
     status: "Open Source",
     description: "AI-powered tool that analyzes GitHub repositories and generates intelligent code insights and metrics.",
     techStack: ["React", "Express", "MongoDB", "GitHub API"],
-    image: "./assets/images/GitIntel.png",
-    demoLink: "https://github.com/Lokesh0018/Git-Intel",
+    image: "./assets/images/projects/GitIntel.png",
     githubLink: "https://github.com/Lokesh0018/Git-Intel",
     caseStudy: {
       problem: "Developers needed a quick way to assess the quality and activity of open-source repositories.",
@@ -174,6 +173,27 @@ const projectsData = [
     }
   },
   {
+    id: "gesture-chess",
+    title: "Gesture Chess",
+    category: "experiments",
+    featured: false,
+    status: "Prototype",
+    description: "An experimental real-time chess game controlled entirely via hand gestures using computer vision.",
+    techStack: ["React", "Express", "PostgreSQL", "MediaPipe"],
+    image: "./assets/images/projects/GChess.png",
+    demoLink: "https://github.com/Lokesh0018/Gesture-Chess",
+    githubLink: "https://github.com/Lokesh0018/Gesture-Chess",
+    caseStudy: {
+      problem: "Traditional chess interfaces limit user interaction to mouse and keyboard inputs, which can be less engaging for players.",
+      architecture: "React frontend with Express backend, using MediaPipe for real-time hand gesture recognition and PostgreSQL for game state management.",
+      contribution: "Developed the gesture recognition module and integrated it with the game logic, ensuring smooth real-time interaction.",
+      challenge: "Achieving accurate gesture recognition in varying lighting conditions and backgrounds.",
+      solution: "Implemented adaptive thresholding and background subtraction techniques to enhance gesture detection accuracy.",
+      outcome: "Provides an engaging and intuitive chess-playing experience through natural hand gestures.",
+      nextSteps: "Expand the gesture vocabulary to include advanced chess moves and implement multiplayer support."
+    }
+  },
+  {
     id: "login-register",
     title: "Login/Register System",
     category: "web apps",
@@ -181,7 +201,7 @@ const projectsData = [
     status: "Open Source",
     description: "A secure and scalable user authentication system with JWT-based login, email verification, and password reset functionality.",
     techStack: ["React", "Spring Boot", "MySQL", "JWT"],
-    image: "./assets/images/LRForm.png",
+    image: "./assets/images/projects/LRForm.png",
     demoLink: "https://github.com/Lokesh0018/loginregister",
     githubLink: "https://github.com/Lokesh0018/loginregister",
     caseStudy: {
@@ -195,16 +215,16 @@ const projectsData = [
     }
   },
   {
-    id: "gesture-chess-1",
-    title: "Gesture Chess",
-    category: "experiments",
+    id: "v-films",
+    title: "V Films",
+    category: "ui",
     featured: false,
-    status: "In Development",
-    description: "An experimental real-time chess game controlled entirely via hand gestures using computer vision.",
-    techStack: ["React", "Express", "PostgreSQL", "MediaPipe"],
-    image: "./assets/images/GChess.png",
-    demoLink: "https://github.com/Lokesh0018/Gesture-Chess",
-    githubLink: "https://github.com/Lokesh0018/Gesture-Chess",
+    status: "Open Source",
+    description: "A visually appealing web showcase for an industry-level film production company, highlighting their portfolio and services.",
+    techStack: ["React", "Responsive Design"],
+    image: "./assets/images/projects/VFilms.png",
+    demoLink: "https://github.com/Lokesh0018/V-Films",
+    githubLink: "https://github.com/Lokesh0018/V-Films",
     caseStudy: null
   },
   {
@@ -215,14 +235,14 @@ const projectsData = [
     status: "In Development",
     description: "A simple calendar application with basic scheduling features.",
     techStack: ["React"],
-    image: "./assets/images/Calendar.png",
+    image: "./assets/images/projects/Calendar.png",
     demoLink: "https://github.com/Lokesh0018/Calendar",
     githubLink: "https://github.com/Lokesh0018/Calendar",
     caseStudy: null
   }
 ];
 
-const categories = ["All", "SaaS", "AI", "Web Apps", "Experiments"];
+const categories = ["All", "SaaS", "AI", "Web Apps", "UI", "Experiments"];
 
 const desktopFiltersContainer = document.getElementById('desktop-filters');
 const mobileFilterList = document.getElementById('mobile-filter-list');
@@ -352,7 +372,10 @@ window.openCaseStudy = function(projectId) {
   
   const cs = p.caseStudy;
   modalContent.innerHTML = `
-    <h3 class="case-study-title">${p.title} - Case Study</h3>
+    <div class="modal-header">
+      <h3 class="case-study-title">${p.title} - Case Study</h3>
+      <hr class="modal-divider">
+    </div>
     <div class="case-study-section">
       <h4>Problem</h4>
       <p>${cs.problem}</p>
