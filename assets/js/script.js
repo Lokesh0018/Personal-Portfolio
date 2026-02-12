@@ -174,6 +174,27 @@ const projectsData = [
     }
   },
   {
+    id: "login-register",
+    title: "Login/Register System",
+    category: "web apps",
+    featured: true,
+    status: "Open Source",
+    description: "A secure and scalable user authentication system with JWT-based login, email verification, and password reset functionality.",
+    techStack: ["React", "Spring Boot", "MySQL", "JWT"],
+    image: "./assets/images/LRForm.png",
+    demoLink: "https://github.com/Lokesh0018/loginregister",
+    githubLink: "https://github.com/Lokesh0018/loginregister",
+    caseStudy: {
+      problem: "Many web applications require a robust authentication system that can handle user registration, login, and password management securely.",
+      architecture: "Spring Boot backend with JWT for authentication, MySQL for data storage.",
+      contribution: "Sole developer; designed the authentication flow and implemented the REST API.",
+      challenge: "Ensuring secure storage and transmission of user credentials.",
+      solution: "Implemented JWT-based authentication with secure token handling and encrypted password storage.",
+      outcome: "Provides a secure and scalable user authentication system.",
+      nextSteps: "Add OAuth2 integration for third-party login options."
+    }
+  },
+  {
     id: "gesture-chess-1",
     title: "Gesture Chess",
     category: "experiments",
@@ -187,16 +208,16 @@ const projectsData = [
     caseStudy: null
   },
   {
-    id: "gesture-chess-2",
-    title: "Gesture Chess v2",
+    id: "calendar",
+    title: "Calendar",
     category: "experiments",
     featured: false,
     status: "In Development",
-    description: "Enhanced gesture recognition engine and multiplayer websocket support for gesture-controlled chess.",
-    techStack: ["React", "Express", "PostgreSQL", "MediaPipe", "Socket.io"],
-    image: "./assets/images/GChess.png",
-    demoLink: "https://github.com/Lokesh0018/Gesture-Chess",
-    githubLink: "https://github.com/Lokesh0018/Gesture-Chess",
+    description: "A simple calendar application with basic scheduling features.",
+    techStack: ["React"],
+    image: "./assets/images/Calendar.png",
+    demoLink: "https://github.com/Lokesh0018/Calendar",
+    githubLink: "https://github.com/Lokesh0018/Calendar",
     caseStudy: null
   }
 ];

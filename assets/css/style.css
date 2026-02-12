@@ -70,6 +70,8 @@
   --fs-6: 14px;
   --fs-7: 13px;
   --fs-8: 11px;
+  --fs-9: 10px;
+  --fs-10: 9px;
   --fw-300: 300;
   --fw-400: 400;
   --fw-500: 500;
@@ -1495,6 +1497,38 @@ textarea.form-input {
     box-shadow: none;
     border-radius: 0;
   }
+
+  .modal-container {
+    max-height: 60vh;
+    padding: 30px;
+  }
+
+  .case-study-title {
+    font-size: var(--fs-2-5);
+    margin-bottom: 20px;
+  }
+
+  .case-study-section {
+    margin-bottom: 24px;
+  }
+
+  .case-study-section h4 {
+    font-size: var(--fs-5);
+    margin-bottom: 10px;
+  }
+
+  .case-study-section p {
+    font-size: var(--fs-6);
+    line-height: 1.6;
+  }
+
+  .modal-close-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    top: 15px;
+    right: 15px;
+  }
 }
 
 /* Mobile responsiveness optimization for very small screens */
@@ -1512,6 +1546,41 @@ textarea.form-input {
   }
   .avatar-box img {
     width: 70px;
+  }
+}
+
+/* Additional adjustment for very small heights */
+@media (max-height: 600px) {
+  .modal-container {
+    max-height: 80vh;
+    padding: 25px;
+  }
+
+  .case-study-title {
+    font-size: var(--fs-3);
+    margin-bottom: 16px;
+  }
+
+  .case-study-section {
+    margin-bottom: 20px;
+  }
+
+  .case-study-section h4 {
+    font-size: var(--fs-6);
+    margin-bottom: 8px;
+  }
+
+  .case-study-section p {
+    font-size: var(--fs-7);
+    line-height: 1.5;
+  }
+
+  .modal-close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    top: 12px;
+    right: 12px;
   }
 }
 
@@ -1533,16 +1602,16 @@ img {
 /* Modal Styling */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(15, 15, 16, 0.85);
-  backdrop-filter: blur(5px);
-  z-index: 20;
+  top: -400px; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 15, 16, 0.92);
+  backdrop-filter: blur(18px);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease;
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-overlay.active {
@@ -1553,20 +1622,37 @@ img {
 .modal-container {
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
-  border-radius: 20px;
-  width: 90%;
-  max-width: 800px;
-  max-height: 90vh;
+  border-radius: 24px;
+  width: 92%;
+  max-width: 900px;
+  max-height: 60vh;
   overflow-y: auto;
   position: relative;
-  transform: scale(0.95);
-  transition: 0.3s ease;
-  box-shadow: var(--shadow-3);
-  padding: 30px;
+  transform: scale(0.92);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 0 30px rgba(255, 215, 0, 0.15),
+    0 0 60px rgba(255, 215, 0, 0.08),
+    inset 0 0 1px rgba(255, 215, 0, 0.2),
+    var(--shadow-3);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
 .modal-overlay.active .modal-container {
   transform: scale(1);
+}
+
+.modal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--orange-yellow-crayola), transparent);
+  opacity: 0.8;
 }
 
 .modal-close-btn {
@@ -1594,24 +1680,51 @@ img {
 .case-study-title {
   color: var(--white-2);
   font-size: var(--fs-2);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   padding-right: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.case-study-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background: var(--text-gradient-yellow);
+  border-radius: 2px;
 }
 
 .case-study-section {
-  margin-bottom: 25px;
+  margin-bottom: 28px;
+  padding-left: 4px;
+  border-left: 2px solid hsla(45, 100%, 72%, 0.1);
 }
 
 .case-study-section h4 {
   color: var(--orange-yellow-crayola);
   font-size: var(--fs-5);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.case-study-section h4::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--text-gradient-yellow);
+  border-radius: 2px;
 }
 
 .case-study-section p {
   color: var(--light-gray);
   font-size: var(--fs-6);
-  line-height: 1.6;
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
 /* Permanent buttons */
