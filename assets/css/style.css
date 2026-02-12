@@ -1744,10 +1744,30 @@ img {
   align-items: center;
   gap: 6px;
   transition: var(--transition-1);
+  position: relative;
+  overflow: hidden;
 }
 .project-actions .btn:hover {
   background: var(--onyx);
   color: var(--orange-yellow-crayola);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-2);
+}
+.project-actions .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+.project-actions .btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 /* Utility Classes (Extracted from inline styles) */
@@ -1913,11 +1933,33 @@ img {
   align-items: center;
   gap: 6px;
   transition: var(--transition-1);
+  position: relative;
+  overflow: hidden;
 }
 
 .download-btn:hover {
   background: var(--onyx);
   color: var(--orange-yellow-crayola);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-2);
+}
+
+.download-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.download-btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .github-chart {
