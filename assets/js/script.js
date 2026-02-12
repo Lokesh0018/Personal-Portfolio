@@ -223,14 +223,13 @@ const projectsData = [
     description: "A visually appealing web showcase for an industry-level film production company, highlighting their portfolio and services.",
     techStack: ["React", "Responsive Design"],
     image: "./assets/images/projects/VFilms.png",
-    demoLink: "https://github.com/Lokesh0018/V-Films",
     githubLink: "https://github.com/Lokesh0018/V-Films",
     caseStudy: null
   },
   {
     id: "calendar",
     title: "Calendar",
-    category: "experiments",
+    category: "ui",
     featured: false,
     status: "In Development",
     description: "A simple calendar application with basic scheduling features.",
@@ -578,3 +577,22 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 skillFills.forEach(fill => observer.observe(fill));
+
+	// --- Scroll Reveal Animations ---
+	const scrollElements = document.querySelectorAll('[data-animate]');
+	const scrollObserver = new IntersectionObserver((entries) => {
+	  entries.forEach(entry => {
+	    if (entry.isIntersecting) {
+	      entry.target.classList.add('animate-in');
+	    } else {
+	      // Optional: remove animation when scrolling back up
+	      // Uncomment the line below if you want elements to hide again when scrolling back up
+	      // entry.target.classList.remove('animate-in');
+	    }
+	  });
+	}, {
+	  threshold: 0.1, // Trigger when 10% of the element is visible
+	  rootMargin: '0px 0px -50px 0px' // Start animation slightly before element fully enters viewport
+	});
+
+	scrollElements.forEach(el => scrollObserver.observe(el));
