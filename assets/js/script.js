@@ -176,7 +176,7 @@ const projectsData = [
     id: "gesture-chess",
     title: "Gesture Chess",
     category: "experiments",
-    featured: false,
+    featured: true,
     status: "Prototype",
     description: "An experimental real-time chess game controlled entirely via hand gestures using computer vision.",
     techStack: ["React", "Express", "PostgreSQL", "MediaPipe"],
@@ -224,6 +224,18 @@ const projectsData = [
     techStack: ["React", "Responsive Design"],
     image: "./assets/images/projects/VFilms.png",
     githubLink: "https://github.com/Lokesh0018/V-Films",
+    caseStudy: null
+  },
+  {
+    id: "react-components",
+    title: "React Components",
+    category: "ui",
+    featured: false,
+    status: "Open Source",
+    description: "A collection of reusable React components for building modern web applications.",
+    techStack: ["React", "Responsive Design", "Vite"],
+    image: "./assets/images/projects/ReactComponents.png",
+    githubLink: "https://github.com/Lokesh0018/React-Components",
     caseStudy: null
   },
   {

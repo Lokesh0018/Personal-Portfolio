@@ -320,10 +320,15 @@ main {
 .social-item .social-link {
   color: var(--white-2);
   font-size: 18px;
-  transition: color var(--transition-1);
+  transition: color var(--transition-1), transform var(--transition-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.social-item .social-link:hover { color: var(--light-gray); }
+.social-item .social-link:hover {
+  transform: scale(1.1);
+}
 
 /* Theme toggle icon - adjusts color based on current theme */
 .theme-toggle .theme-btn ion-icon {
