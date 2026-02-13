@@ -64,32 +64,63 @@ if (navigationLinks.length > 0 && pages.length > 0) {
     navigationLinks[i].addEventListener("click", function () {
       const targetPage = this.innerHTML.toLowerCase();
 
-      // First, remove active class from all nav links and all pages
-      // Also remove animate-in class from all pages to sync with visibility
+      // Find currently active page
+      let currentActivePage = null;
+      for (let k = 0; k < pages.length; k++) {
+        if (pages[k].classList.contains("active")) {
+          currentActivePage = pages[k];
+          break;
+        }
+      }
+
+      // If already on the target page, do nothing
+      if (currentActivePage && currentActivePage.dataset.page === targetPage) {
+        return;
+      }
+
+      // First, remove active class from all nav links
       for (let k = 0; k < navigationLinks.length; k++) {
         navigationLinks[k].classList.remove("active");
       }
-      for (let k = 0; k < pages.length; k++) {
-        pages[k].classList.remove("active");
-        pages[k].classList.remove("animate-in");
-      }
-
+      
       // Then, add active class to the clicked nav link
       this.classList.add("active");
 
-      // Then, find and activate the matching page
-      let foundMatch = false;
-      for (let j = 0; j < pages.length; j++) {
-        if (targetPage === pages[j].dataset.page) {
-          pages[j].classList.add("active");
-          pages[j].classList.add("animate-in"); // Also add animate-in for sync
-          foundMatch = true;
-          break; // No need to check further
+      // Handle the transition
+      if (currentActivePage) {
+        // Start fade out
+        currentActivePage.classList.remove("animate-in");
+        currentActivePage.classList.add("fade-out");
+
+        setTimeout(() => {
+          // After fade out, hide old page
+          currentActivePage.classList.remove("active");
+          currentActivePage.classList.remove("fade-out");
+
+          // Show new page
+          for (let j = 0; j < pages.length; j++) {
+            if (targetPage === pages[j].dataset.page) {
+              pages[j].classList.add("active");
+              // Slight delay to allow display block to register before animating in
+              setTimeout(() => {
+                pages[j].classList.add("animate-in");
+              }, 10);
+              window.scrollTo(0, 0);
+              break;
+            }
+          }
+        }, 300); // 300ms matches fadeSlideDown animation duration
+      } else {
+        // Fallback if no active page
+        for (let j = 0; j < pages.length; j++) {
+          if (targetPage === pages[j].dataset.page) {
+            pages[j].classList.add("active");
+            pages[j].classList.add("animate-in");
+            window.scrollTo(0, 0);
+            break;
+          }
         }
       }
-      // If no match found, all pages remain inactive (hidden)
-
-      window.scrollTo(0, 0);
     });
   }
 }

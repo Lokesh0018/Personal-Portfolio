@@ -438,9 +438,16 @@ article {
   display: none;
 }
 
-article.active {
+article.active, article.fade-out {
   display: block;
+}
+
+article.active {
   animation: fadeSlideUp 0.5s ease forwards;
+}
+
+article.fade-out {
+  animation: fadeSlideDown 0.3s ease forwards;
 }
 
 @keyframes fadeSlideUp {
@@ -451,6 +458,17 @@ article.active {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15px);
   }
 }
 
