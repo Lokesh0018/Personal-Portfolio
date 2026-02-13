@@ -435,26 +435,12 @@ main {
 
 /* Article and general headings styling */
 article {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 article.active {
-  opacity: 1;
-  pointer-events: all;
-  z-index: 2;
-}
-
-/* Ensure smooth transition by having both pages in the same space */
-article:not(.active) {
-  /* Keep them positioned but invisible during transition */
-  pointer-events: none;
+  display: block;
+  animation: fadeSlideUp 0.5s ease forwards;
 }
 
 @keyframes fadeSlideUp {
