@@ -63,17 +63,33 @@ if (navigationLinks.length > 0 && pages.length > 0) {
   for (let i = 0; i < navigationLinks.length; i++) {
     navigationLinks[i].addEventListener("click", function () {
       const targetPage = this.innerHTML.toLowerCase();
-      
+
+      // First, remove active class from all nav links and all pages
+      // Also remove animate-in class from all pages to sync with visibility
+      for (let k = 0; k < navigationLinks.length; k++) {
+        navigationLinks[k].classList.remove("active");
+      }
+      for (let k = 0; k < pages.length; k++) {
+        pages[k].classList.remove("active");
+        pages[k].classList.remove("animate-in");
+      }
+
+      // Then, add active class to the clicked nav link
+      this.classList.add("active");
+
+      // Then, find and activate the matching page
+      let foundMatch = false;
       for (let j = 0; j < pages.length; j++) {
         if (targetPage === pages[j].dataset.page) {
           pages[j].classList.add("active");
-          navigationLinks[j].classList.add("active");
-          window.scrollTo(0, 0);
-        } else {
-          pages[j].classList.remove("active");
-          navigationLinks[j].classList.remove("active");
+          pages[j].classList.add("animate-in"); // Also add animate-in for sync
+          foundMatch = true;
+          break; // No need to check further
         }
       }
+      // If no match found, all pages remain inactive (hidden)
+
+      window.scrollTo(0, 0);
     });
   }
 }

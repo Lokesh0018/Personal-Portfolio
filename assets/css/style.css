@@ -141,6 +141,18 @@ main {
   min-width: 259px;
 }
 
+.main-content {
+  flex-grow: 1;
+  min-width: 259px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  box-shadow: var(--shadow-1);
+  min-height: 100vh;
+}
+
 /* Sidebar (Profile Card / Hero Intro) */
 .sidebar {
   background: hsla(240, 2%, 12%, 0.7);
@@ -422,11 +434,27 @@ main {
 }
 
 /* Article and general headings styling */
-article { display: none; }
+article {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
 
 article.active {
-  display: block;
-  animation: fadeSlideUp 0.5s ease-out forwards;
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* Ensure smooth transition by having both pages in the same space */
+article:not(.active) {
+  /* Keep them positioned but invisible during transition */
+  pointer-events: none;
 }
 
 @keyframes fadeSlideUp {
@@ -1513,7 +1541,6 @@ textarea.form-input {
     border-bottom: 1px solid var(--jet);
     border-left: 1px solid var(--jet);
     border-radius: 0 20px 0 20px;
-    padding: 0 20px;
   }
 
   /* Filters list for Projects on large screen */
