@@ -1672,18 +1672,18 @@ img {
   display: inline-block;
   width: 10px;
   height: 10px;
-  background-color: #2ecc71;
+  background-color: var(--orange-yellow-crayola);
   border-radius: 50%;
   margin-left: 8px;
   vertical-align: middle;
-  box-shadow: 0 0 8px #2ecc71;
-  animation: pulse-green 2s infinite;
+  box-shadow: 0 0 8px var(--orange-yellow-crayola);
+  animation: pulse 2s infinite;
 }
 
-@keyframes pulse-green {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 hsla(45, 100%, 72%, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px hsla(45, 100%, 72%, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 hsla(45, 100%, 72%, 0); }
 }
 
 /* Scroll To Top */
