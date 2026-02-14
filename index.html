@@ -45,7 +45,12 @@
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box" style="width: 80px; height: 80px; display: flex; justify-content: center; align-items: center; border-radius: 50%; overflow: hidden; margin: 0 auto; background: var(--onyx); perspective: 1000px;">
-          <img src="./assets/images/my-avatar.png" alt="Lokesh Munakala" width="80" id="avatar-img" style="transition: transform 0.1s ease-out; transform-style: preserve-3d; will-change: transform;">
+          <!-- 2D Avatar Fallback -->
+          <img src="./assets/images/my-avatar.png" alt="Lokesh Munakala" width="80" id="avatar-img-2d" style="transition: transform 0.1s ease-out; transform-style: preserve-3d; will-change: transform; display: block;">
+
+          <!-- 3D Avatar Container -->
+          <div id="avatar-3d-container" style="width: 80px; height: 80px; display: none; position: absolute; top: 0; left: 0;">
+          </div>
         </figure>
         <div class="info-content">
           <h1 class="name" title="Lokesh Munakala">Lokesh Munakala <span class="hire-indicator" title="Available for Hire"></span></h1>
@@ -584,7 +589,35 @@
     <ion-icon name="chevron-up-outline"></ion-icon>
   </button>
 
+  <!-- 3D Container -->
+  <div id="threejs-container"></div>
+
+  <!-- Skill Sphere Container -->
+  <div id="skill-sphere-container"></div>
+
+  <!-- Project Scene Container -->
+  <div id="project-scene-container"></div>
+
   <script src="./assets/js/script.js"></script>
+  <!-- Three.js for 3D effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- 3D Loaders for GLTF and Draco -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/DRACOLoader.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- 3D Initialization -->
+  <script src="./assets/js/threejs-init.js"></script>
+  <!-- 3D Avatar -->
+  <script src="./assets/js/avatar-3d.js"></script>
+  <!-- 3D Skill Sphere -->
+  <script src="./assets/js/threeD/skillSphere.js"></script>
+  <!-- 3D Project Cards -->
+  <script src="./assets/js/threeD/projectCards.js"></script>
+  <!-- 3D Background -->
+  <script src="./assets/js/threeD/background3D.js"></script>
+  <!-- 3D Navigation -->
+  <script src="./assets/js/threeD/nav3D.js"></script>
   <!-- #ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -2147,3 +2147,19 @@ img {
   height: auto;
   border-radius: 50%;
 }
+
+/* Skill Tooltip Styles for 3D Skill Sphere */
+.skill-tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+/* End of file */

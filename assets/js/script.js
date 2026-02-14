@@ -508,6 +508,25 @@ if (document.getElementById('featured-projects')) {
   renderProjects();
 }
 
+// Initialize 3D systems
+let skillSphereInitialized = false;
+let projectSceneInitialized = false;
+
+// Initialize 3D systems after DOM loads
+function init3DSystems() {
+    // Initialize skill sphere
+    if (typeof initSkillSphere === 'function') {
+        skillSphereInitialized = initSkillSphere();
+        console.log('Skill sphere initialized:', skillSphereInitialized);
+    }
+
+    // Initialize 3D project scene
+    if (typeof initProjectScene === 'function') {
+        projectSceneInitialized = initProjectScene();
+        console.log('3D project scene initialized:', projectSceneInitialized);
+    }
+}
+
 // --- Avatar Sequence Animation ---
 const avatarImg = document.getElementById('avatar-img');
 const totalFrames = 181;
@@ -674,3 +693,6 @@ skillFills.forEach(fill => observer.observe(fill));
 	});
 
 	scrollElements.forEach(el => scrollObserver.observe(el));
+
+	// Initialize 3D systems after a short delay to ensure DOM is ready
+	setTimeout(init3DSystems, 100);
