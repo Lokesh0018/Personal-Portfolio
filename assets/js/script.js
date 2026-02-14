@@ -661,6 +661,8 @@ skillFills.forEach(fill => observer.observe(fill));
 	const scrollObserver = new IntersectionObserver((entries) => {
 	  entries.forEach(entry => {
 	    if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-delay');
+          if (delay) entry.target.style.transitionDelay = `${delay}ms`;
 	      entry.target.classList.add('animate-in');
 	    } else {
 	      // Optional: remove animation when scrolling back up
