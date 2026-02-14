@@ -737,6 +737,27 @@ article.fade-out {
   border-radius: 8px;
   border: 1px solid var(--jet);
   transition: background var(--transition-1), color var(--transition-1), border-color var(--transition-1), transform var(--transition-1);
+  position: relative;
+}
+.skill-tag::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: 120%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white-2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: var(--fs-9);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+.skill-tag:hover::after {
+  opacity: 1;
 }
 
 .skill-tag:hover {

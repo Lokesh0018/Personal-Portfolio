@@ -228,7 +228,6 @@ const projectsData = [
     description: "An experimental real-time chess game controlled entirely via hand gestures using computer vision.",
     techStack: ["React", "Express", "PostgreSQL", "MediaPipe"],
     image: "./assets/images/projects/GChess.png",
-    demoLink: "https://github.com/Lokesh0018/Gesture-Chess",
     githubLink: "https://github.com/Lokesh0018/Gesture-Chess",
     caseStudy: {
       problem: "Traditional chess interfaces limit user interaction to mouse and keyboard inputs, which can be less engaging for players.",
@@ -249,7 +248,6 @@ const projectsData = [
     description: "A secure and scalable user authentication system with JWT-based login, email verification, and password reset functionality.",
     techStack: ["React", "Spring Boot", "MySQL", "JWT"],
     image: "./assets/images/projects/LRForm.png",
-    demoLink: "https://github.com/Lokesh0018/loginregister",
     githubLink: "https://github.com/Lokesh0018/loginregister",
     caseStudy: {
       problem: "Many web applications require a robust authentication system that can handle user registration, login, and password management securely.",
@@ -260,6 +258,28 @@ const projectsData = [
       outcome: "Provides a secure and scalable user authentication system.",
       nextSteps: "Add OAuth2 integration for third-party login options."
     }
+  },
+  {
+    id: "student-management-system",
+    title: "Student Management System",
+    category: "web apps",
+    featured: false,
+    status: "Open Source",
+    description: "A comprehensive system for managing student records, grades, and attendance.",
+    techStack: ["React", "Spring Boot", "MySQL"],
+    image: "./assets/images/projects/StudentManagementSystem.png",
+    githubLink: "https://github.com/Lokesh0018/StudentManagementSystem",
+    caseStudy: null
+  },
+  {
+    id: "v-films",
+    title: "V Films",
+    category: "ui",
+    featured: false,
+    techStack: ["React", "Responsive Design"],
+    image: "./assets/images/projects/VFilms.png",
+    githubLink: "https://github.com/Lokesh0018/V-Films",
+    caseStudy: null
   },
   {
     id: "v-films",
@@ -294,7 +314,6 @@ const projectsData = [
     description: "A simple calendar application with basic scheduling features.",
     techStack: ["React"],
     image: "./assets/images/projects/Calendar.png",
-    demoLink: "https://github.com/Lokesh0018/Calendar",
     githubLink: "https://github.com/Lokesh0018/Calendar",
     caseStudy: null
   }
