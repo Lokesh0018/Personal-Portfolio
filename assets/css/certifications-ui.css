@@ -100,6 +100,26 @@
 }
 
 /* 6. Icon Radial Glow & 4. Animated Icons */
+.skill-tag::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: -35px; /* position above the tag */
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white-2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: var(--fs-9);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+.skill-tag:hover::after {
+  opacity: 1;
+}
 .cert-icon-box {
   position: relative;
   width: 42px;
@@ -199,7 +219,7 @@
   transition: opacity 0.3s ease;
 }
 .certification-item:hover .cert-item-text {
-  -webkit-line-clamp: 10; /* Expand on hover */
+  -webkit-line-clamp: 10;
 }
 .certification-item:hover .cert-item-text::after {
   opacity: 0; /* Remove fade */
