@@ -676,3 +676,104 @@ skillFills.forEach(fill => observer.observe(fill));
 	});
 
 	scrollElements.forEach(el => scrollObserver.observe(el));
+
+// --- Certifications Animation Stagger & Enhancements ---
+const certificationItems = document.querySelectorAll(".certification-item");
+certificationItems.forEach((item, index) => {
+  // Stagger reveal
+  item.style.animationDelay = `${index * 150}ms`;
+
+  // Apply thematic accent
+  const category = item.dataset.category;
+  if (category) {
+    const accentMap = {
+      'cloud': 'cloud',
+      'data science': 'data-science',
+      'cybersecurity': 'cybersecurity',
+      'full stack': 'full-stack'
+    };
+    if (accentMap[category]) {
+      item.dataset.themeAccent = accentMap[category];
+    }
+  }
+
+  // Append View Credential button
+  const contentBox = item.querySelector('.cert-content-box');
+  if (contentBox) {
+    const btn = document.createElement('a');
+    btn.href = '#';
+    btn.className = 'view-credential-btn';
+    btn.innerHTML = '<span>View Credential</span><ion-icon name="arrow-forward-outline"></ion-icon>';
+    contentBox.appendChild(btn);
+
+    // Magnetic Button Effect
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = `translate(0px, 0px)`;
+    });
+  }
+
+  // 3D Tilt Effect
+  item.addEventListener('mousemove', (e) => {
+    const rect = item.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within the element
+    const y = e.clientY - rect.top;  // y position within the element
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const tiltX = ((y - centerY) / centerY) * -5; // max 5 deg
+    const tiltY = ((x - centerX) / centerX) * 5;  // max 5 deg
+    
+    item.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+  });
+  
+  item.addEventListener('mouseleave', () => {
+    item.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  });
+
+  // Click Ripple Effect
+  item.addEventListener('mousedown', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    const rect = item.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+    item.appendChild(ripple);
+    setTimeout(() => { ripple.remove(); }, 600);
+  });
+});
+
+// Certifications Filtering
+const certFilterBtns = document.querySelectorAll("[data-cert-filter-btn]");
+if (certFilterBtns.length > 0) {
+  certFilterBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Remove active from all
+      certFilterBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      
+      const filterValue = this.innerHTML.toLowerCase();
+      
+      certificationItems.forEach(item => {
+        if (filterValue === "all") {
+          item.style.display = "flex";
+        } else {
+          const category = item.dataset.category;
+          if (category === filterValue) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
+        }
+      });
+    });
+  });
+}

@@ -30,6 +30,7 @@
   <link rel="shortcut icon" href="./assets/images/logo-sequence/ezgif-frame-120.jpg" type="image/x-icon">
 
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/certifications-ui.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -438,26 +439,64 @@
         </header>
 
         <section class="certifications-section">
-          <ul class="certifications-list">
-            <li class="certification-item">
-              <div class="cert-icon-box">
+          
+          <ul class="filter-list" id="cert-filters" style="margin-bottom: 25px;">
+            <li class="filter-item"><button class="active" data-cert-filter-btn>All</button></li>
+            <li class="filter-item"><button data-cert-filter-btn>Full Stack</button></li>
+            <li class="filter-item"><button data-cert-filter-btn>Cloud</button></li>
+            <li class="filter-item"><button data-cert-filter-btn>Data Science</button></li>
+            <li class="filter-item"><button data-cert-filter-btn>Cybersecurity</button></li>
+          </ul>
+          <ul class="certifications-list"><li class="certification-item" data-category="full stack">
+              <div class="cert-icon-box" data-description="Tilicho Labs Certification - Jr.Software Developer Engineer Intern | Full‑time">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">Tilicho Labs</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2026</span>
+                </div>
+                <h4 class="h4 cert-item-title">Jr.Software Developer Engineer Intern | Full‑time</h4>
+                <p class="cert-item-text">
+                  Gained hands-on experience in full-stack web development(MERN), including frontend and backend technologies, and contributed to production-grade applications.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="full stack">
+              <div class="cert-icon-box" data-description="Visakhapatnam Port Authority Certification - IT Intern as Java Full Stack Developer | Full‑time">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">Visakhapatnam Port Authority</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2023</span>
+                </div>
+                <h4 class="h4 cert-item-title">IT Intern as Java Full Stack Developer | Full‑time</h4>
+                <p class="cert-item-text">
+                  Gained hands-on experience in Java programming, web development, and database management.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="full stack">
+              <div class="cert-icon-box" data-description="AND Intern Certification - Java Full Stack Developer">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
                 <div class="cert-meta">
                   <span class="cert-issuer">AND Intern</span>
                   <span class="dot"></span>
-                  <span class="cert-year">2026</span>
+                  <span class="cert-year">2024</span>
                 </div>
                 <h4 class="h4 cert-item-title">Java Full Stack Developer</h4>
                 <p class="cert-item-text">
-                  Comprehensive training in Java, Spring Boot, React.js, and full-stack web application development.
+                  Gained foundational knowledge in full-stack web development, including frontend and backend technologies.
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="cloud">
+              <div class="cert-icon-box" data-description="AWS Academy Certification - Cloud Architecting">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
@@ -472,60 +511,88 @@
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="data science">
+              <div class="cert-icon-box" data-description="EduSkills Certification - AWS Data Engineering Virtual Internship">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
                 <div class="cert-meta">
-                  <span class="cert-issuer">NPTEL</span>
+                  <span class="cert-issuer">EduSkills</span>
                   <span class="dot"></span>
                   <span class="cert-year">2025</span>
                 </div>
-                <h4 class="h4 cert-item-title">Data Science for Engineers (Elite)</h4>
+                <h4 class="h4 cert-item-title">AWS Data Engineering Virtual Internship</h4>
                 <p class="cert-item-text">
-                  Advanced certification in algorithms, mathematical modeling, and engineering approaches to data science.
+                  Practical experience in designing data pipelines, data warehousing, and analytics solutions for real-world applications.
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="data science">
+              <div class="cert-icon-box" data-description="EduSkills Certification - Google AI-ML Virtual Internship">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
                 <div class="cert-meta">
-                  <span class="cert-issuer">NPTEL</span>
+                  <span class="cert-issuer">EduSkills</span>
                   <span class="dot"></span>
-                  <span class="cert-year">2024</span>
+                  <span class="cert-year">2025</span>
                 </div>
-                <h4 class="h4 cert-item-title">Programming in Java (Silver Badge)</h4>
+                <h4 class="h4 cert-item-title">Google AI-ML Virtual Internship</h4>
                 <p class="cert-item-text">
-                  Rigorous evaluation of core Java, OOP paradigms, multi-threading, applets, and database connectivity.
+                  Hands-on experience in machine learning model development, data preprocessing, and deployment of AI solutions.
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="cybersecurity">
+              <div class="cert-icon-box" data-description="EduSkills Certification - Palo Alto Networks Cybersecurity">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
                 <div class="cert-meta">
-                  <span class="cert-issuer">NPTEL</span>
+                  <span class="cert-issuer">EduSkills</span>
                   <span class="dot"></span>
-                  <span class="cert-year">2024</span>
+                  <span class="cert-year">2025</span>
                 </div>
-                <h4 class="h4 cert-item-title">Joy of Computing Using Python (Silver Badge)</h4>
+                <h4 class="h4 cert-item-title">Palo Alto Networks Cybersecurity</h4>
                 <p class="cert-item-text">
-                  Academic programming paradigms, logic building, computational theory, and algorithm design using Python.
+                  Comprehensive training on network security, threat detection, and incident response.
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="data science">
+              <div class="cert-icon-box" data-description="AWS Academy Certification - Data Engineering">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">AWS Academy</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2025</span>
+                </div>
+                <h4 class="h4 cert-item-title">Data Engineering</h4>
+                <p class="cert-item-text">
+                  Comprehensive training on data pipelines, ETL processes, and data storage solutions using AWS services.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="full stack">
+              <div class="cert-icon-box" data-description="EduSkills Certification - Android Developer Virtual Internship">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">EduSkills</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2025</span>
+                </div>
+                <h4 class="h4 cert-item-title">Android Developer Virtual Internship</h4>
+                <p class="cert-item-text">
+                  Hands-on experience in Android app development, UI/UX design, and integrating APIs for mobile applications.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="cloud">
+              <div class="cert-icon-box" data-description="AWS Academy Certification - Cloud Foundations">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
@@ -540,20 +607,51 @@
                 </p>
               </div>
             </li>
-
-            <li class="certification-item">
-              <div class="cert-icon-box">
+<li class="certification-item" data-category="data science">
+              <div class="cert-icon-box" data-description="NPTEL Certification - Data Science for Engineers (Elite)">
                 <ion-icon name="ribbon-outline"></ion-icon>
               </div>
               <div class="cert-content-box">
                 <div class="cert-meta">
-                  <span class="cert-issuer">AWS Academy</span>
+                  <span class="cert-issuer">NPTEL</span>
                   <span class="dot"></span>
                   <span class="cert-year">2025</span>
                 </div>
-                <h4 class="h4 cert-item-title">Data Engineering</h4>
+                <h4 class="h4 cert-item-title">Data Science for Engineers (Elite)</h4>
                 <p class="cert-item-text">
-                  Comprehensive training on data pipelines, ETL processes, and data storage solutions using AWS services.
+                  Advanced certification in algorithms, mathematical modeling, and engineering approaches to data science.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="full stack">
+              <div class="cert-icon-box" data-description="NPTEL Certification - Programming in Java (Elite + Silver Badge)">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">NPTEL</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2024</span>
+                </div>
+                <h4 class="h4 cert-item-title">Programming in Java (Elite + Silver Badge)</h4>
+                <p class="cert-item-text">
+                  Rigorous evaluation of core Java, OOP paradigms, multi-threading, applets, and database connectivity.
+                </p>
+              </div>
+            </li>
+<li class="certification-item" data-category="data science">
+              <div class="cert-icon-box" data-description="NPTEL Certification - Joy of Computing Using Python (Elite + Silver Badge)">
+                <ion-icon name="ribbon-outline"></ion-icon>
+              </div>
+              <div class="cert-content-box">
+                <div class="cert-meta">
+                  <span class="cert-issuer">NPTEL</span>
+                  <span class="dot"></span>
+                  <span class="cert-year">2024</span>
+                </div>
+                <h4 class="h4 cert-item-title">Joy of Computing Using Python (Elite + Silver Badge)</h4>
+                <p class="cert-item-text">
+                  Academic programming paradigms, logic building, computational theory, and algorithm design using Python.
                 </p>
               </div>
             </li>
