@@ -2587,13 +2587,78 @@ img {
   color: var(--light-gray-70);
 }
 
-/* Download resume button in resume section in light theme */
+/* Download resume button in resume section in light theme - redesigned to be exact visual counterpart of dark theme button */
 [data-theme="light"] article.resume .download-btn {
-  background: var(--white-1);
-  color: var(--white-2);
+  /* Background: white-to-light-gray gradient (#FFFFFF → #F3F3F3) */
+  background: linear-gradient(to bottom right, #FFFFFF, #F3F3F3);
+  /* Text/icon color: medium gray (#4A4A4A) */
+  color: #4A4A4A;
+  /* Preserve dimensional properties from dark theme */
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: var(--fs-7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-1);
+  position: relative;
+  overflow: hidden;
+  /* Add border and shadows as per requirements */
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12),
+              inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
 [data-theme="light"] article.resume .download-btn:hover {
-  background: var(--onyx);
-  color: var(--white-1);
+  /* Slightly brightened gradient on hover */
+  background: linear-gradient(to bottom right, #F8F8F8, #FBFBFB);
+  /* Text/icon to accent yellow (#F4C24E) on hover */
+  color: #F4C24E;
+  /* Preserve hover transform from dark theme */
+  transform: scale(1.05);
+  /* Increased shadow on hover */
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15),
+              inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Preserve the ::before element for bevel/gloss effect from dark theme */
+[data-theme="light"] article.resume .download-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* Bevel overlay: very light gray translucent (rgba(0,0,0,0.04)) */
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(0,0,0,0.04),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+[data-theme="light"] article.resume .download-btn:hover::before {
+  animation: sweep 1.5s infinite;
+}
+
+/* Preserve the ::after element for ripple effect from dark theme */
+[data-theme="light"] article.resume .download-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+[data-theme="light"] article.resume .download-btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
