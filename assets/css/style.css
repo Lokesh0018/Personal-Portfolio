@@ -96,9 +96,9 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--smoky-black); }
-::-webkit-scrollbar-thumb { background: var(--onyx); border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: var(--vegas-gold); }
+::-webkit-scrollbar-track { background: var(--smoky-black); border-radius: 5px; }
+::-webkit-scrollbar-thumb { background: var(--onyx); border-radius: 5px; border: 2px solid var(--smoky-black); }
+::-webkit-scrollbar-thumb:hover { background: var(--orange-yellow-crayola); }
 
 *, *::before, *::after {
   margin: 0;
