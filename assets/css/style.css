@@ -794,6 +794,28 @@ article.fade-out {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
+/* Skill tag tooltip styling for light theme */
+[data-theme="light"] .skill-tag {
+  background: var(--eerie-black-2);
+  color: var(--white-2);
+  border: 1px solid var(--jet);
+}
+
+[data-theme="light"] .skill-tag:hover {
+  background: var(--onyx);
+  color: var(--white-1);
+  border-color: var(--orange-yellow-crayola);
+}
+
+[data-theme="light"] .skill-tag::after {
+  background: var(--eerie-black-1);
+  color: var(--white-1);
+}
+
+[data-theme="light"] .skill-tag:hover::after {
+  opacity: 1;
+}
+
 /* Timeline (Experience & Education) Section */
 .timeline { margin-bottom: 30px; }
 
