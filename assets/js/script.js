@@ -718,25 +718,6 @@ certificationItems.forEach((item, index) => {
     });
   }
 
-  // 3D Tilt Effect
-  item.addEventListener('mousemove', (e) => {
-    const rect = item.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within the element
-    const y = e.clientY - rect.top;  // y position within the element
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const tiltX = ((y - centerY) / centerY) * -5; // max 5 deg
-    const tiltY = ((x - centerX) / centerX) * 5;  // max 5 deg
-    
-    item.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
-  });
-  
-  item.addEventListener('mouseleave', () => {
-    item.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-  });
-
   // Click Ripple Effect
   item.addEventListener('mousedown', (e) => {
     const ripple = document.createElement('div');
