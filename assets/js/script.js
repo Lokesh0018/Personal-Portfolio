@@ -690,7 +690,8 @@ certificationItems.forEach((item, index) => {
       'cloud': 'cloud',
       'data science': 'data-science',
       'cybersecurity': 'cybersecurity',
-      'full stack': 'full-stack'
+      'full stack': 'full-stack',
+      'programming': 'programming'
     };
     if (accentMap[category]) {
       item.dataset.themeAccent = accentMap[category];
@@ -701,7 +702,11 @@ certificationItems.forEach((item, index) => {
   const contentBox = item.querySelector('.cert-content-box');
   if (contentBox) {
     const btn = document.createElement('a');
-    btn.href = '#';
+    const btnUrl = item.dataset.url || '#';
+    btn.href = btnUrl;
+    if (btnUrl !== '#') {
+      btn.target = '_blank';
+    }
     btn.className = 'view-credential-btn';
     btn.innerHTML = '<span>View Credential</span><ion-icon name="arrow-forward-outline"></ion-icon>';
     contentBox.appendChild(btn);

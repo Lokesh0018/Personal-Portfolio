@@ -2502,6 +2502,7 @@ img {
 .certification-item[data-theme-accent="data-science"] { --accent-color: hsl(280, 100%, 65%); }
 .certification-item[data-theme-accent="cybersecurity"] { --accent-color: hsl(350, 100%, 65%); }
 .certification-item[data-theme-accent="full-stack"] { --accent-color: hsl(45, 100%, 72%); }
+.certification-item[data-theme-accent="programming"] { --accent-color: hsl(150, 100%, 65%); }
 
 .certification-item[data-theme-accent] .cert-icon-box { color: var(--accent-color); }
 .certification-item[data-theme-accent] .cert-issuer {
@@ -2580,7 +2581,7 @@ img {
 
 .certification-item:hover .cert-icon-box {
   background: var(--onyx);
-  color: var(--orange-yellow-crayola);
+  color: var(--accent-color, var(--orange-yellow-crayola));
   transform: scale(1.1);
 }
 
