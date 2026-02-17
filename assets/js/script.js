@@ -556,8 +556,8 @@ if (document.getElementById('featured-projects')) {
 // --- Avatar Sequence Animation ---
 const avatarImg = document.getElementById('avatar-img');
 const totalFrames = 181;
-let targetFrame = 91; // Center face
-let currentFrame = 91; // Used for smooth interpolation
+let targetFrame = 1; // Start at front view (eyes open)
+let currentFrame = 1; // Used for smooth interpolation
 let displayedFrame = 0; // Tracks currently applied frame
 
 document.addEventListener('mousemove', (e) => {
@@ -622,12 +622,12 @@ if (scrollToTopBtn) {
 const themeBtn = document.querySelector('.theme-btn');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or use system preference
+// Check for saved theme preference
 const getCurrentTheme = () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) return savedTheme;
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return 'dark'; // Default to dark theme for new users
 };
 
 const setTheme = (theme) => {
