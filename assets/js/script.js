@@ -132,26 +132,71 @@ const formBtn = document.querySelector("[data-form-btn]");
 
 const toast = document.createElement('div');
 toast.className = 'toast hidden';
-toast.textContent = 'Message Sent Successfully!';
 document.body.appendChild(toast);
 
-if (form && formInputs.length > 0 && formBtn) {
-  for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-      if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-      } else {
-        formBtn.setAttribute("disabled", "");
-      }
-    });
-  }
+let toastTimeout;
+function showToast(message, type) {
+  clearTimeout(toastTimeout);
+  toast.innerHTML = `<ion-icon class="toast-icon" name="${type === 'success' ? 'checkmark-circle' : 'alert-circle'}"></ion-icon><span>${message}</span>`;
+  toast.className = `toast ${type}`;
+  toastTimeout = setTimeout(() => {
+    toast.className = 'toast hidden';
+  }, 4000);
+}
 
-  form.addEventListener('submit', (e) => {
+if (form && formInputs.length > 0 && formBtn) {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    toast.classList.remove('hidden');
-    setTimeout(() => toast.classList.add('hidden'), 3000);
-    form.reset();
+    
+    let hasEmpty = false;
+    let hasInvalidEmail = false;
+
+    for (let i = 0; i < formInputs.length; i++) {
+      const input = formInputs[i];
+      if (!input.value.trim()) {
+        hasEmpty = true;
+      } else if (input.type === 'email' && !input.validity.valid) {
+        hasInvalidEmail = true;
+      }
+    }
+
+    if (hasEmpty) {
+      showToast('Please fill in all required fields.', 'error');
+      return;
+    }
+    if (hasInvalidEmail) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+    
     formBtn.setAttribute("disabled", "");
+    
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        showToast('Message Sent Successfully!', 'success');
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          showToast(data.errors.map(error => error.message).join(", "), 'error');
+        } else {
+          showToast('Oops! There was a problem submitting your form', 'error');
+        }
+        formBtn.removeAttribute("disabled");
+      }
+    } catch (error) {
+      showToast('Oops! There was a network error', 'error');
+      formBtn.removeAttribute("disabled");
+    }
   });
 }
 

@@ -2166,24 +2166,39 @@ img {
 .toast {
   position: fixed;
   bottom: 30px;
-  left: 30px;
-  background: var(--bg-gradient-yellow-1);
-  color: var(--smoky-black);
+  right: 30px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  color: var(--light-gray);
   padding: 15px 25px;
-  border-radius: 10px;
+  border-radius: 14px;
   font-size: var(--fs-6);
   font-weight: var(--fw-500);
-  z-index: 100;
+  z-index: 1000;
   box-shadow: var(--shadow-2);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: translateX(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+  transform: translateY(0);
   opacity: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-
 .toast.hidden {
-  transform: translateX(-100%);
+  transform: translateY(100px);
   opacity: 0;
+  pointer-events: none;
 }
+.toast.success {
+  border-left: 4px solid var(--orange-yellow-crayola);
+}
+.toast.error {
+  border-left: 4px solid var(--orange-yellow-crayola);
+}
+.toast-icon {
+  font-size: 1.5rem;
+}
+.toast.success .toast-icon { color: hsl(120, 100%, 65%); }
+.toast.error .toast-icon { color: hsl(0, 100%, 65%); }
 
 /* --- Preloader --- */
 .preloader {
