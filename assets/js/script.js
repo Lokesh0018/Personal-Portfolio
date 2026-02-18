@@ -572,6 +572,17 @@ let targetFrame = 1; // Start at front view (eyes open)
 let currentFrame = 1; // Used for smooth interpolation
 let displayedFrame = 0; // Tracks currently applied frame
 
+// Pre-fetch avatar images into memory
+const avatarImages = [];
+if (avatarImg) {
+  for (let i = 1; i <= totalFrames; i++) {
+    const img = new Image();
+    const formattedFrame = i.toString().padStart(3, '0');
+    img.src = `./assets/images/avatar-sequence/ezgif-frame-${formattedFrame}.jpg`;
+    avatarImages.push(img);
+  }
+}
+
 document.addEventListener('mousemove', (e) => {
   if (!avatarImg) return;
   
@@ -603,9 +614,11 @@ function animateAvatar() {
     const frameToDisplay = Math.round(currentFrame);
     
     if (displayedFrame !== frameToDisplay && frameToDisplay >= 1 && frameToDisplay <= totalFrames) {
-      displayedFrame = frameToDisplay;
-      const formattedFrame = displayedFrame.toString().padStart(3, '0');
-      avatarImg.src = `./assets/images/avatar-sequence/ezgif-frame-${formattedFrame}.jpg`;
+      // Only swap frame if it has finished downloading to prevent flickering/glitching
+      if (avatarImages[frameToDisplay - 1].complete) {
+        displayedFrame = frameToDisplay;
+        avatarImg.src = avatarImages[displayedFrame - 1].src;
+      }
     }
   }
   requestAnimationFrame(animateAvatar);
