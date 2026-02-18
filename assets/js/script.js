@@ -24,19 +24,31 @@ function checkPreloaderDone() {
 function playPreloader() {
   if (!preloaderImg) return;
   
+  // Pre-fetch images into memory
+  const images = [];
+  for (let i = startFramePreloader; i <= endFramePreloader; i++) {
+    const img = new Image();
+    const formattedFrame = i.toString().padStart(3, '0');
+    img.src = `./assets/images/logo-sequence/ezgif-frame-${formattedFrame}.jpg`;
+    images.push(img);
+  }
+
   const preloadInterval = setInterval(() => {
-    currentPreloadFrame++;
+    const nextIndex = currentPreloadFrame - startFramePreloader;
     
-    if (currentPreloadFrame > endFramePreloader) {
+    if (nextIndex >= images.length) {
       clearInterval(preloadInterval);
       preloaderAnimationFinished = true;
       checkPreloaderDone();
       return;
     }
     
-    const formattedFrame = currentPreloadFrame.toString().padStart(3, '0');
-    preloaderImg.src = `./assets/images/logo-sequence/ezgif-frame-${formattedFrame}.jpg`;
-  }, 35); // ~28 fps
+    // Only advance frame if the browser has finished downloading the image
+    if (images[nextIndex].complete) {
+      preloaderImg.src = images[nextIndex].src;
+      currentPreloadFrame++;
+    }
+  }, 35); // ~28 fps cap
 }
 
 // Start immediately
