@@ -1,0 +1,25 @@
+/*-----------------------------------*\
+  #style.css - Baseline Setup
+\*-----------------------------------*/
+
+:root {
+  /* solid colors */
+  --smoky-black: hsl(0, 0%, 7%);
+  --white-1: hsl(0, 0%, 100%);
+  
+  /* typography */
+  --ff-poppins: 'Poppins', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--smoky-black);
+  color: var(--white-1);
+  font-family: var(--ff-poppins);
+  -webkit-font-smoothing: antialiased;
+}
