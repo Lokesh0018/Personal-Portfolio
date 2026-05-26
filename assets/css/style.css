@@ -1,14 +1,32 @@
 /*-----------------------------------*\
-  #style.css - Baseline Setup
+  #style.css - Responsive Navigation
 \*-----------------------------------*/
 
 :root {
   /* solid colors */
-  --smoky-black: hsl(0, 0%, 7%);
+  --smoky-black: hsl(240, 2%, 9%);
+  --eerie-black-1: hsl(240, 2%, 13%);
+  --eerie-black-2: hsl(240, 2%, 12%);
+  --jet: hsl(240, 1%, 19%);
+  --onyx: hsl(240, 1%, 17%);
   --white-1: hsl(0, 0%, 100%);
+  --white-2: hsl(0, 0%, 98%);
+  --light-gray: hsl(0, 0%, 84%);
+  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --vegas-gold: hsl(45, 54%, 58%);
+  
+  /* shadow */
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+  
+  /* transitions */
+  --transition-1: 0.25s ease;
   
   /* typography */
   --ff-poppins: 'Poppins', sans-serif;
+  --fs-8: 12px;
+  --fw-500: 500;
 }
 
 *, *::before, *::after {
@@ -22,4 +40,52 @@ body {
   color: var(--white-1);
   font-family: var(--ff-poppins);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar container */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: hsla(240, 2%, 12%, 0.85);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--jet);
+  border-radius: 12px 12px 0 0;
+  box-shadow: var(--shadow-2);
+  z-index: 5;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  list-style: none;
+}
+
+.navbar-item {
+  display: block;
+}
+
+.navbar-link {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  font-weight: var(--fw-500);
+  padding: 20px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  transition: color var(--transition-1);
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+  color: var(--light-gray);
+}
+
+.navbar-link.active {
+  color: var(--orange-yellow-crayola);
 }
