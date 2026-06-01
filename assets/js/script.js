@@ -35,3 +35,54 @@ if (navigationLinks.length > 0 && pages.length > 0) {
     });
   }
 }
+
+// Custom select variables (Projects filter dropdown for mobile)
+const select = document.querySelector("[data-select]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+const selectValue = document.querySelector("[data-selecct-value]");
+const filterBtn = document.querySelectorAll("[data-filter-btn]");
+const filterItems = document.querySelectorAll("[data-filter-item]");
+
+if (select) {
+  select.addEventListener("click", function () { elementToggleFunc(this); });
+}
+
+const filterFunc = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    const itemCategory = filterItems[i].dataset.category;
+    if (selectedValue === "all" || selectedValue === itemCategory) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
+    }
+  }
+}
+
+// Add event in all select items (mobile dropdown list)
+if (selectItems.length > 0) {
+  for (let i = 0; i < selectItems.length; i++) {
+    selectItems[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) selectValue.innerText = this.innerText;
+      elementToggleFunc(select);
+      filterFunc(selectedValue);
+    });
+  }
+}
+
+// Add event in all filter button items (desktop horizontal list)
+if (filterBtn.length > 0) {
+  let lastClickedBtn = filterBtn[0];
+  
+  for (let i = 0; i < filterBtn.length; i++) {
+    filterBtn[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) selectValue.innerText = this.innerText;
+      filterFunc(selectedValue);
+      
+      if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+      this.classList.add("active");
+      lastClickedBtn = this;
+    });
+  }
+}
