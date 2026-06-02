@@ -86,3 +86,21 @@ if (filterBtn.length > 0) {
     });
   }
 }
+
+// Contact form validation variables
+const form = document.querySelector("[data-form]");
+const formInputs = document.querySelectorAll("[data-form-input]");
+const formBtn = document.querySelector("[data-form-btn]");
+
+// Add input validation listener
+if (form && formInputs.length > 0 && formBtn) {
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
+    });
+  }
+}
