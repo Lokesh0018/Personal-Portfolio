@@ -333,12 +333,18 @@ article { display: none; }
 
 article.active {
   display: block;
-  animation: fade 0.5s ease backwards;
+  animation: fadeSlideUp 0.5s ease-out forwards;
 }
 
-@keyframes fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .h2, .h3, .h4, .h5 {
@@ -481,6 +487,11 @@ article.active {
   background: var(--text-gradient-yellow);
   height: 100%;
   border-radius: inherit;
+  animation: fillProgress 1.2s ease-out forwards;
+}
+
+@keyframes fillProgress {
+  from { width: 0; }
 }
 
 /* Skills Categories Grid */
