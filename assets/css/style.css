@@ -1245,3 +1245,21 @@ textarea.form-input {
     border-radius: 0;
   }
 }
+
+/* Mobile responsiveness optimization for very small screens */
+@media (max-width: 360px) {
+  :root {
+    --fs-8: 10px;
+    --fs-7: 11px;
+    --fs-6: 12px;
+  }
+  .navbar-link {
+    padding: 15px 8px;
+  }
+  .sidebar-info {
+    gap: 10px;
+  }
+  .avatar-box img {
+    width: 70px;
+  }
+}
