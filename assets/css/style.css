@@ -1263,3 +1263,18 @@ textarea.form-input {
     width: 70px;
   }
 }
+
+/* Performance Optimization - CLS prevention & aspect ratio constraints */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.avatar-box img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.project-img {
+  aspect-ratio: 1.5 / 1;
+}
