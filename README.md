@@ -1,44 +1,47 @@
-# vCard - Personal portfolio
+# Lokesh Munakala - Personal Portfolio
 
-![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/vcard-personal-portfolio)
-![GitHub stars](https://img.shields.io/github/stars/codewithsadee/vcard-personal-portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/codewithsadee/vcard-personal-portfolio?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-[![YouTube Video Views](https://img.shields.io/youtube/views/SoxmIlgf2zM?style=social)](https://youtu.be/SoxmIlgf2zM)
+A premium, fully responsive personal portfolio website for **Lokesh Munakala**, a Computer Science Undergraduate and Full Stack Web Developer.
 
-vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
+This portfolio showcases professional experience, academic background, technical skills, certifications, and active projects in a sleek, dark-themed, glassmorphic layout.
 
-## Demo
+## 🚀 Live Demo
 
-![vCard Desktop Demo](./website-demo-image/desktop.png "Desktop Demo")
-![vCard Mobile Demo](./website-demo-image/mobile.png "Mobile Demo")
+To view the portfolio, simply open `index.html` in any modern web browser, or use a local development server such as VS Code Live Server.
 
-## Prerequisites
+## ✨ Features
 
-Before you begin, ensure you have met the following requirements:
+- **Profile Sidebar (Hero Card):** An elegant, collapsible summary card showing profile avatar, title, email, phone, location, and social links.
+- **Dynamic Tab Switching:** Fast page switching between tabs (About, Resume, Projects, Certifications, Contact) with fluid slide-up transitions.
+- **Categorized Skills Grid:** Top technical skills visualized via animated progress bars alongside categorized tags for Languages, Frontend, Backend, Databases, and Core Competencies.
+- **Projects Filtering:** Interactive project cards showing tech stacks, descriptions, and GitHub links, with filter states (SaaS, Full-Stack, Personal).
+- **Certifications Showcase:** Dedicated credentials section showing academic credentials from AWS Academy and NPTEL.
+- **Interactive Contact Form:** Secure submission form with real-time validations alongside a custom-themed dark Google Map of Visakhapatnam.
+- **Visual Design Excellence:** Glassmorphism card overlays, smooth animations, layout elevation transitions, and responsive mobile-first typography.
 
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+## 🛠️ Technology Stack
 
-## Installing vCard
+- **Markup:** Semantic HTML5
+- **Styling:** Custom Vanilla CSS3 (Variables, Media Queries, Custom Keyframes)
+- **Logic:** Native Vanilla JavaScript (ES6 Modules)
+- **Icons:** Ionicons CDN
+- **Fonts:** Google Fonts (Poppins)
 
-To install **vCard**, follow these steps:
+## 📦 Local Installation
 
-Linux and macOS:
+To clone and run this project locally:
 
-```bash
-sudo git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Lokesh0018/vcard-personal-portfolio-master.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd vcard-personal-portfolio-master
+   ```
+3. Open `index.html` in your favorite browser or start a dev server.
 
-Windows:
+## 📬 Contact
 
-```bash
-git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
-```
-
-## Contact
-
-If you want to contact me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
-
-## License
-
-MIT
+- **Email:** munakalalokesh222@gmail.com
+- **LinkedIn:** [lokesh-munakala](https://linkedin.com/in/lokesh-munakala)
+- **GitHub:** [Lokesh0018](https://github.com/Lokesh0018)
