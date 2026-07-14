@@ -26,7 +26,6 @@
   <meta property="twitter:description" content="Personal portfolio of Lokesh Munakala, a Computer Science undergraduate specializing in full-stack web development. Experienced with React, Spring Boot, Java, Node.js, and database design.">
   <meta property="twitter:image" content="./assets/images/my-avatar.png">
 
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,12 +36,12 @@
     <!-- #SIDEBAR -->
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Lokesh Munakala" width="80">
+        <figure class="avatar-box" style="width: 80px; height: 80px; display: flex; justify-content: center; align-items: center; border-radius: 50%; overflow: hidden; margin: 0 auto; background: var(--onyx); perspective: 1000px;">
+          <img src="./assets/images/my-avatar.png" alt="Lokesh Munakala" width="80" id="avatar-img" style="transition: transform 0.1s ease-out; transform-style: preserve-3d; will-change: transform;">
         </figure>
         <div class="info-content">
-          <h1 class="name" title="Lokesh Munakala">Lokesh Munakala</h1>
-          <p class="title">CS Undergraduate / Full Stack Developer</p>
+          <h1 class="name" title="Lokesh Munakala">Lokesh Munakala <span class="hire-indicator" title="Available for Hire"></span></h1>
+          <p class="title value-prop">Full-Stack Developer building scalable SaaS and AI-powered web applications.</p>
         </div>
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
@@ -54,7 +53,7 @@
         <div class="separator"></div>
         <ul class="contacts-list">
           <li class="contact-item">
-            <div class="icon-box">
+            <div class="icon-box contact-icon">
               <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="contact-info">
@@ -63,7 +62,7 @@
             </div>
           </li>
           <li class="contact-item">
-            <div class="icon-box">
+            <div class="icon-box contact-icon">
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
             <div class="contact-info">
@@ -72,7 +71,7 @@
             </div>
           </li>
           <li class="contact-item">
-            <div class="icon-box">
+            <div class="icon-box contact-icon">
               <ion-icon name="location-outline"></ion-icon>
             </div>
             <div class="contact-info">
@@ -168,12 +167,38 @@
             </li>
           </ul>
         </section>
+
+        <!-- GitHub Activity -->
+        <section class="github-activity">
+          <h3 class="h3 service-title">GitHub Activity</h3>
+          <div class="github-graph-container" style="background: var(--border-gradient-onyx); padding: 20px; border-radius: 14px; overflow-x: auto;">
+            <img src="https://ghchart.rshah.org/5B4810/Lokesh0018" alt="Lokesh0018's GitHub Activity Graph" class="github-chart" style="min-width: 600px;">
+          </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials" style="margin-top: 35px;">
+          <h3 class="h3 service-title">Testimonials</h3>
+          <ul class="testimonials-list has-scrollbar" style="display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px;">
+            <li class="testimonials-item" style="min-width: 300px;">
+              <div class="content-card" style="background: var(--border-gradient-onyx); padding: 20px; border-radius: 14px;">
+                <h4 class="h4 testimonials-item-title" style="margin-bottom: 10px;">Manager / Mentor</h4>
+                <div class="testimonials-text" style="color: var(--light-gray); font-size: var(--fs-6);">
+                  <p>"Lokesh consistently delivers high-quality code and is an excellent problem solver."</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
       </article>
 
       <!-- #RESUME -->
       <article class="resume" data-page="resume">
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
+        <header style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 30px;">
+          <h2 class="h2 article-title" style="margin-bottom: 0;">Resume</h2>
+          <a href="./assets/resume.pdf" download class="btn download-btn">
+            <ion-icon name="download-outline"></ion-icon> Download PDF
+          </a>
         </header>
 
         <!-- Experience Section -->
@@ -188,7 +213,7 @@
           <ol class="timeline-list">
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Jr. Software Development Engineer Intern — Tilicho Labs</h4>
-              <span>Jan 2026 — Present</span>
+              <span>Jan 2026 — Jun 2026</span>
               <p class="timeline-text">
                 Developing full-stack features for production-grade web applications using React and backend architectures. Staging API integration, debugging, and collaborate with senior developers on testing and deployments.
               </p>
@@ -260,20 +285,20 @@
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">Spring Boot & Express.js</h5>
-                <data value="80">80%</data>
+                <data value="85">85%</data>
               </div>
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
+                <div class="skill-progress-fill" style="width: 85%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">SQL & NoSQL Databases</h5>
-                <data value="85">85%</data>
+                <data value="80">80%</data>
               </div>
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
+                <div class="skill-progress-fill" style="width: 80%;"></div>
               </div>
             </li>
           </ul>
@@ -342,6 +367,55 @@
             </div>
           </div>
         </section>
+      </article>
+
+      <!-- #PROJECTS -->
+      <article class="projects" data-page="projects">
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="projects-gallery">
+          <!-- Filter buttons for large screen -->
+          <ul class="filter-list hidden" id="desktop-filters">
+            <!-- Rendered by JS -->
+          </ul>
+
+          <!-- Filter select dropdown for mobile screen -->
+          <div class="filter-select-box hidden" id="mobile-filters">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>Select Category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+            <ul class="select-list" id="mobile-filter-list">
+              <!-- Rendered by JS -->
+            </ul>
+          </div>
+
+          <h3 class="h3 section-title featured-title">Featured Projects</h3>
+          <ul class="project-list" id="featured-projects">
+            <!-- Rendered by JS -->
+          </ul>
+
+          <h3 class="h3 section-title more-title">More Projects</h3>
+          <ul class="project-list" id="more-projects">
+            <!-- Rendered by JS -->
+          </ul>
+        </section>
+
+        <!-- Case Study Modal Template -->
+        <div class="modal-overlay" id="case-study-modal" data-modal>
+          <div class="modal-container">
+            <button class="modal-close-btn" data-modal-close>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <div class="modal-content" id="modal-content">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
       </article>
 
       <!-- #CERTIFICATIONS -->
@@ -440,115 +514,6 @@
         </section>
       </article>
 
-      <!-- #PROJECTS -->
-      <article class="projects" data-page="projects">
-        <header>
-          <h2 class="h2 article-title">Projects</h2>
-        </header>
-
-        <section class="projects-gallery">
-          <!-- Filter buttons for large screen -->
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>SaaS</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Full-Stack</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Personal</button>
-            </li>
-          </ul>
-
-          <!-- Filter select dropdown for mobile screen -->
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>Select Category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>SaaS</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Full-Stack</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Personal</button>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Project card grid -->
-          <ul class="project-list">
-            <li class="project-item active" data-filter-item data-category="saas">
-              <a href="https://github.com/Lokesh0018/result-scale" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/project-1.jpg" alt="Result Scale" loading="lazy">
-                </figure>
-                <h3 class="project-title">Result Scale</h3>
-                <p class="project-category">SaaS Application</p>
-                <div class="project-tech-stack">
-                  <span>React</span>
-                  <span>Node.js</span>
-                  <span>Express</span>
-                  <span>PostgreSQL</span>
-                  <span>Brevo API</span>
-                </div>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="full-stack">
-              <a href="https://github.com/Lokesh0018/HT-Generator" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/project-2.png" alt="Hall Ticket Generator" loading="lazy">
-                </figure>
-                <h3 class="project-title">Hall Ticket Generator</h3>
-                <p class="project-category">Full-Stack App</p>
-                <div class="project-tech-stack">
-                  <span>Spring Boot</span>
-                  <span>React</span>
-                  <span>MySQL</span>
-                </div>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="personal">
-              <a href="https://github.com/Lokesh0018" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/project-3.jpg" alt="Web Applications Suite" loading="lazy">
-                </figure>
-                <h3 class="project-title">Web Applications Suite</h3>
-                <p class="project-category">Personal Projects</p>
-                <div class="project-tech-stack">
-                  <span>React</span>
-                  <span>Spring Boot</span>
-                  <span>MySQL</span>
-                  <span>JS</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </article>
-
       <!-- #CONTACT -->
       <article class="contact" data-page="contact">
         <header>
@@ -601,6 +566,10 @@
       </nav>
     </div>
   </main>
+
+  <button id="scroll-to-top" class="scroll-to-top hidden">
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </button>
 
   <script src="./assets/js/script.js"></script>
   <!-- #ionicons -->
